@@ -27,6 +27,7 @@
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 80px; /* Evita que a navbar cubra o topo das seções ao clicar no menu */
         }
 
         body {
@@ -37,6 +38,56 @@
             -webkit-font-smoothing: antialiased;
         }
 
+        /* NAVBAR */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 0;
+            background: rgba(5, 5, 5, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: var(--accent);
+            text-decoration: none;
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-family: monospace;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* CURSOR E CANVAS */
         .custom-cursor {
             position: fixed;
             top: 0;
@@ -80,9 +131,22 @@
             font-family: 'Syne', sans-serif;
             line-height: 0.9;
             text-transform: uppercase;
-            overflow-wrap: break-word; /* Evita que palavras grandes quebrem o layout */
+            overflow-wrap: break-word;
         }
 
+        /* ANIMAÇÃO SCROLL REVEAL */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* SEÇÕES GERAIS */
         .hero {
             position: relative;
             padding-top: 20vh;
@@ -251,8 +315,8 @@
         }
 
         .contact h2 {
-            font-size: clamp(3rem, 8vw, 10rem);
-            margin-bottom: 3rem;
+            font-size: clamp(2.2rem, 12vw, 4rem); 
+            margin-bottom: 2rem;
         }
 
         .social-links {
@@ -289,13 +353,22 @@
             transform: translateX(0);
         }
 
-        /* Ajustes de Responsividade (Mobile) */
+        /* RESPONSIVIDADE MOBILE */
         @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+            }
+            .nav-links a {
+                font-size: 0.75rem;
+            }
+            .logo {
+                display: none; /* Esconde logo no mobile para dar espaço aos links */
+            }
+            .nav-container {
+                justify-content: center;
+            }
             .hero {
                 padding-top: 15vh;
-            }
-            .hero h1 {
-                font-size: clamp(3rem, 12vw, 5rem);
             }
             .hero p.tagline {
                 margin-left: 0;
@@ -320,17 +393,11 @@
                 align-items: flex-start;
                 text-align: left;
             }
-            .contact h2 {
-                /* Reduzimos o tamanho base de 4rem para 2.2rem para encaixar o START_TALKING */
-                font-size: clamp(2.2rem, 12vw, 4rem); 
-                margin-bottom: 2rem;
-            }
             .social-links {
                 flex-direction: column;
                 gap: 1rem;
                 align-items: center;
             }
-            /* Transforma os links em botões mais fáceis de tocar no mobile */
             .social-links a {
                 width: 100%;
                 max-width: 300px;
@@ -345,11 +412,11 @@
                 color: var(--bg-color);
             }
             .social-links a::after {
-                display: none; /* Remove o hover de linha no mobile */
+                display: none;
             }
         }
 
-        /* Desativa cursor modificado e restaura pointer nativo em dispositivos touch */
+        /* AJUSTES PARA DISPOSITIVOS TOUCH (MOBILE E TABLET) */
         @media (pointer: coarse) {
             .custom-cursor {
                 display: none !important;
@@ -360,29 +427,46 @@
             a, .hover-target, button {
                 cursor: pointer !important;
             }
+            /* Exibe as imagens coloridas por padrão no mobile, já que não há hover */
+            .project-image-wrapper img {
+                filter: grayscale(0%);
+            }
         }
     </style>
 </head>
 <body>
+
+    <!-- NAVBAR ADDED -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo hover-target">SYS.INIT</a>
+            <div class="nav-links">
+                <a href="#home" class="hover-target">[ // INÍCIO ]</a>
+                <a href="#about" class="hover-target">[ // SOBRE ]</a>
+                <a href="#portfolio" class="hover-target">[ // PROJETOS ]</a>
+                <a href="#contact" class="hover-target">[ // CONTATO ]</a>
+            </div>
+        </div>
+    </nav>
 
     <div class="custom-cursor" id="cursor"></div>
     <canvas id="neural-canvas"></canvas>
 
     <div class="container">
         
-        <section class="hero">
-            <h1>Iago <span>Silva</span><br>& Murilo <span>Bozolan</span></h1>
-            <p class="tagline">
+        <section class="hero" id="home">
+            <h1 class="reveal">Iago <span>Silva</span><br>& Murilo <span>Bozolan</span></h1>
+            <p class="tagline reveal" style="transition-delay: 0.2s;">
                Transformamos ideias em sites modernos, rápidos e funcionais
             </p>
         </section>
 
         <!-- SOBRE NÓS -->
-        <section class="about">
-            <h2>System.<br>Initiated</h2>
+        <section class="about" id="about">
+            <h2 class="reveal">System.<br>Initiated</h2>
             <div class="grid">
                 <div></div>
-                <div class="about-text">
+                <div class="about-text reveal">
                     <p>
                         Somos estudantes de <strong>Inteligência Artificial e Engenharia de Software</strong> e transformamos nossas ideias em projetos reais. Unimos programação, design e tecnologia para criar experiências digitais modernas, funcionais e pensadas para cada negócio.
                     </p>
@@ -392,12 +476,12 @@
         </section>
 
         <!-- PORTFÓLIO -->
-        <section class="portfolio">
-            <h2>Arquivos // Projetos</h2>
+        <section class="portfolio" id="portfolio">
+            <h2 class="reveal">Arquivos // Projetos</h2>
             
             <div class="portfolio-grid">
                 
-                <a href="https://gr-barbearia-liard.vercel.app" target="_blank" class="project-card hover-target">
+                <a href="https://gr-barbearia-liard.vercel.app" target="_blank" class="project-card hover-target reveal">
                     <div class="project-image-wrapper">
                         <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="GR Barbearia">
                     </div>
@@ -408,7 +492,7 @@
                     </div>
                 </a>
 
-                <a href="https://inovapele.vercel.app" target="_blank" class="project-card hover-target">
+                <a href="https://inovapele.vercel.app" target="_blank" class="project-card hover-target reveal">
                     <div class="project-image-wrapper">
                         <img src="image_20869e.jpg" alt="Inova Pele" style="object-fit: contain; padding: 2rem; background-color: #FF66A3;">
                     </div>
@@ -419,7 +503,7 @@
                     </div>
                 </a>
 
-                <a href="https://azmaringa.vercel.app" target="_blank" class="project-card hover-target">
+                <a href="https://azmaringa.vercel.app" target="_blank" class="project-card hover-target reveal">
                     <div class="project-image-wrapper">
                         <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="AZ Maringá">
                     </div>
@@ -433,9 +517,9 @@
             </div>
         </section>
 
-        <section class="contact">
-            <h2>START_TALKING</h2>
-            <div class="social-links">
+        <section class="contact" id="contact">
+            <h2 class="reveal">START_TALKING</h2>
+            <div class="social-links reveal" style="transition-delay: 0.2s;">
                 <a href="https://www.linkedin.com/in/iago-silva-3909773bb" target="_blank" class="hover-target">LinkedIn</a>
                 
                 <a href="https://api.whatsapp.com/send?phone=5512996154214&text=vim%20do%20seu%20site%20e%20gostaria%20de%20contratar%20o%20servi%C3%A7o." target="_blank" class="hover-target">WhatsApp</a>
@@ -445,10 +529,10 @@
     </div>
 
     <script>
+        // CONFIGURAÇÃO DO CURSOR
         const cursor = document.getElementById('cursor');
         const hoverTargets = document.querySelectorAll('a, .hover-target');
 
-        // Impede a lógica do cursor rodar se o display for none (mobile)
         document.addEventListener('mousemove', (e) => {
             if (window.getComputedStyle(cursor).display !== 'none') {
                 cursor.style.left = e.clientX + 'px';
@@ -473,13 +557,12 @@
             });
         });
 
+        // CONFIGURAÇÃO DOS CARDS (3D Hover)
         const cards = document.querySelectorAll('.project-card');
-
         cards.forEach(card => {
             const wrapper = card.querySelector('.project-image-wrapper');
             
             card.addEventListener('mousemove', (e) => {
-                // Desativa animação 3D no mobile se preferir focar em performance
                 if(window.innerWidth > 768) {
                     const rect = wrapper.getBoundingClientRect();
                     const x = e.clientX - rect.left;
@@ -519,6 +602,24 @@
             });
         });
 
+        // SCROLL REVEAL OBSERVER
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealObserver = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target); // Para animar apenas uma vez ao descer
+            });
+        }, revealOptions);
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // CONFIGURAÇÃO DO CANVAS (Fundo Neural)
         const canvas = document.getElementById('neural-canvas');
         const ctx = canvas.getContext('2d');
         let width, height;
@@ -590,7 +691,6 @@
 
         function init() {
             particles = [];
-           
             let divider = window.innerWidth > 768 ? 9000 : 15000; 
             let numberOfParticles = (width * height) / divider;
             for (let i = 0; i < numberOfParticles; i++) {
@@ -627,7 +727,6 @@
         init();
         animate();
 
-       
         window.addEventListener('resize', () => {
             init();
         });
