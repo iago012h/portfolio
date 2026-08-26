@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iago & Murilo | AI & Software Engineering</title>
+    
+    <!-- Tipografia Exclusiva -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==========================================
+           CSS VARIÁVEIS & RESET
+           ========================================== */
+        :root {
+            --bg-color: #050505;
+            --text-primary: #F3F3F3;
+            --text-secondary: #888888;
+            --accent: #00E5FF; /* Cyan tecnológico */
+            --cursor-size: 20px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ==========================================
+           CURSOR CUSTOMIZADO
+           ========================================== */
+        .custom-cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: var(--cursor-size);
+            height: var(--cursor-size);
+            background: var(--accent);
+            border-radius: 50%;
+            pointer-events: none;
+            mix-blend-mode: difference;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s;
+        }
+
+        /* ==========================================
+           CANVAS BACKGROUND
+           ========================================== */
+        #neural-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        /* ==========================================
+           LAYOUT & SEÇÕES
+           ========================================== */
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 10vh 0;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Syne', sans-serif;
+            line-height: 0.9;
+            text-transform: uppercase;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            padding-top: 20vh;
+        }
+
+        .hero h1 {
+            font-size: clamp(4rem, 10vw, 12rem);
+            letter-spacing: -0.05em;
+            margin-bottom: 2rem;
+            color: transparent;
+            -webkit-text-stroke: 1px var(--text-primary);
+            position: relative;
+        }
+
+        .hero h1 span {
+            color: var(--text-primary);
+            -webkit-text-stroke: 0;
+        }
+
+        .hero p.tagline {
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            max-width: 600px;
+            color: var(--text-secondary);
+            margin-left: auto;
+            text-align: right;
+            border-right: 2px solid var(--accent);
+            padding-right: 20px;
+        }
+
+        /* --- SOBRE NÓS --- */
+        .about .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: end;
+        }
+
+        .about h2 {
+            font-size: clamp(3rem, 6vw, 6rem);
+            grid-column: 1 / -1;
+        }
+
+        .about-text {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        .about-text strong {
+            color: var(--text-primary);
+        }
+
+        .ufpr-badge {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 10px 20px;
+            border: 1px solid var(--text-secondary);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* --- PORTFÓLIO --- */
+        .portfolio-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10vh;
+            margin-top: 10vh;
+        }
+
+        .project-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+            perspective: 1000px; 
+        }
+
+        .project-card:nth-child(even) {
+            direction: rtl;
+        }
+        .project-card:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .project-image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 60vh;
+            overflow: hidden;
+            border-radius: 10px;
+            transition: transform 0.1s ease-out;
+            transform-style: preserve-3d;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            background: #111; /* Fundo para logos que não preenchem tudo */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ajusta a imagem perfeitamente */
+            filter: grayscale(100%);
+            transition: filter 0.5s ease;
+        }
+
+        .project-card:hover .project-image-wrapper img {
+            filter: grayscale(0%);
+        }
+
+        .project-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .project-card:nth-child(even) .project-info {
+            align-items: flex-end;
+            text-align: right;
+        }
+
+        .project-info h3 {
+            font-size: clamp(2rem, 4vw, 4rem);
+            margin-bottom: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .project-card:hover .project-info h3 {
+            color: var(--accent);
+        }
+
+        .project-info p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Botão Explícito do Site */
+        .project-btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border: 1px solid var(--text-secondary);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover .project-btn {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--bg-color);
+            font-weight: 500;
+        }
+
+        /* --- CONTATO --- */
+        .contact {
+            min-height: 60vh;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .contact h2 {
+            font-size: clamp(4rem, 8vw, 10rem);
+            margin-bottom: 3rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 3rem;
+            justify-content: center;
+        }
+
+        .social-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: var(--accent);
+            transform: translateX(-101%);
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover::after {
+            transform: translateX(0);
+        }
+
+        @media (max-width: 768px) {
+            .about .grid, .project-card {
+                grid-template-columns: 1fr;
+            }
+            .hero p.tagline {
+                margin-left: 0;
+                text-align: left;
+                border-right: none;
+                border-left: 2px solid var(--accent);
+                padding-left: 20px;
+            }
+            .project-image-wrapper {
+                height: 40vh;
+            }
+            .project-card:nth-child(even) .project-info {
+                align-items: flex-start;
+                text-align: left;
+            }
+            .social-links {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="custom-cursor" id="cursor"></div>
+    <canvas id="neural-canvas"></canvas>
+
+    <div class="container">
+        
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <h1>Iago <span>Silva</span><br>& Murilo <span>Bozolan</span></h1>
+            <p class="tagline">
+                Nós não usamos templates. Nós arquitetamos inteligência. Transformando lógica complexa em experiências digitais viscerais.
+            </p>
+        </section>
+
+        <!-- SOBRE NÓS -->
+        <section class="about">
+            <h2>System.<br>Initiated</h2>
+            <div class="grid">
+                <div></div>
+                <div class="about-text">
+                    <p>
+                        Somos estudantes de <strong>Inteligência Artificial e Engenharia de Software</strong>, imersos no ecossistema da inovação. Unimos o rigor algorítmico do back-end com a fluidez estética do front-end.
+                        Para nós, código não é apenas sintaxe; é a ponte entre dados brutos e interação humana inteligente.
+                    </p>
+                    <div class="ufpr-badge">UFPR // Jandaia do Sul</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PORTFÓLIO -->
+        <section class="portfolio">
+            <h2>Arquivos // Projetos</h2>
+            
+            <div class="portfolio-grid">
+                
+                <!-- Projeto 1 -->
+                <a href="https://gr-barbearia-liard.vercel.app" target="_blank" class="project-card hover-target">
+                    <div class="project-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="GR Barbearia">
+                    </div>
+                    <div class="project-info">
+                        <h3>GR Barbearia</h3>
+                        <p>Plataforma digital para gestão e agendamento, combinando estética moderna com usabilidade direta.</p>
+                        <span class="project-btn">Acesse aqui o site ↗</span>
+                    </div>
+                </a>
+
+                <!-- Projeto 2 (INOVA PELE ATUALIZADO) -->
+                <a href="https://inovapele.vercel.app" target="_blank" class="project-card hover-target">
+                    <div class="project-image-wrapper">
+                         <!-- Imagem substituída pela logo solicitada -->
+                        <img src="image_20869e.jpg" alt="Inova Pele" style="object-fit: contain; padding: 2rem; background-color: #FF66A3;">
+                    </div>
+                    <div class="project-info">
+                        <h3>Inova Pele</h3>
+                        <p>Landing page mobile-first de alta conversão para clínica de estética, projetada com performance extrema.</p>
+                        <span class="project-btn">Acesse aqui o site ↗</span>
+                    </div>
+                </a>
+
+                <!-- Projeto 3 -->
+                <a href="https://azmaringa.vercel.app" target="_blank" class="project-card hover-target">
+                    <div class="project-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="AZ Maringá">
+                    </div>
+                    <div class="project-info">
+                        <h3>AZ Maringá</h3>
+                        <p>Interface corporativa imersiva focada em apresentar autoridade de marca através de design minimalista.</p>
+                        <span class="project-btn">Acesse aqui o site ↗</span>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- CONTATO (ATUALIZADO) -->
+        <section class="contact">
+            <h2>START_TALKING</h2>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/iago-silva-3909773bb" target="_blank" class="hover-target">LinkedIn</a>
+                <!-- Link direto para o WhatsApp com mensagem pré-programada -->
+                <a href="https://api.whatsapp.com/send?phone=5512996154214&text=vim%20do%20seu%20site%20e%20gostaria%20de%20contratar%20o%20servi%C3%A7o." target="_blank" class="hover-target">WhatsApp</a>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        const cursor = document.getElementById('cursor');
+        const hoverTargets = document.querySelectorAll('a, .hover-target');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        hoverTargets.forEach(target => {
+            target.addEventListener('mouseenter', () => {
+                cursor.style.width = '60px';
+                cursor.style.height = '60px';
+                cursor.style.background = 'white';
+            });
+            target.addEventListener('mouseleave', () => {
+                cursor.style.width = '20px';
+                cursor.style.height = '20px';
+                cursor.style.background = 'var(--accent)';
+            });
+        });
+
+        const cards = document.querySelectorAll('.project-card');
+
+        cards.forEach(card => {
+            const wrapper = card.querySelector('.project-image-wrapper');
+            
+            card.addEventListener('mousemove', (e) => {
+                const rect = wrapper.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = ((y - centerY) / centerY) * -15;
+                const rotateY = ((x - centerX) / centerX) * 15;
+                
+                wrapper.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                wrapper.style.transform = `rotateX(0deg) rotateY(0deg) scale(1)`;
+            });
+            
+            card.addEventListener('mouseenter', () => {
+                cursor.style.width = '80px';
+                cursor.style.height = '80px';
+                cursor.style.mixBlendMode = 'normal';
+                cursor.style.background = 'rgba(0, 229, 255, 0.2)';
+                cursor.style.backdropFilter = 'blur(4px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                cursor.style.width = '20px';
+                cursor.style.height = '20px';
+                cursor.style.mixBlendMode = 'difference';
+                cursor.style.background = 'var(--accent)';
+                cursor.style.backdropFilter = 'none';
+            });
+        });
+
+        const canvas = document.getElementById('neural-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+        let mouse = { x: null, y: null, radius: 150 };
+
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.x;
+            mouse.y = e.y;
+        });
+
+        window.addEventListener('mouseout', () => {
+            mouse.x = undefined;
+            mouse.y = undefined;
+        });
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.size = Math.random() * 2 + 1;
+                this.baseX = this.x;
+                this.baseY = this.y;
+                this.density = (Math.random() * 30) + 1;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if(this.x < 0 || this.x > width) this.vx = -this.vx;
+                if(this.y < 0 || this.y > height) this.vy = -this.vy;
+
+                if(mouse.x != null) {
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    let forceDirectionX = dx / distance;
+                    let forceDirectionY = dy / distance;
+                    let maxDistance = mouse.radius;
+                    let force = (maxDistance - distance) / maxDistance;
+                    let directionX = forceDirectionX * force * this.density;
+                    let directionY = forceDirectionY * force * this.density;
+
+                    if (distance < mouse.radius) {
+                        this.x -= directionX;
+                        this.y -= directionY;
+                    }
+                }
+            }
+
+            draw() {
+                ctx.fillStyle = 'rgba(0, 229, 255, 0.5)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.closePath();
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            particles = [];
+            let numberOfParticles = (width * height) / 9000;
+            for (let i = 0; i < numberOfParticles; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+                
+                for (let j = i; j < particles.length; j++) {
+                    let dx = particles[i].x - particles[j].x;
+                    let dy = particles[i].y - particles[j].y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < 120) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(0, 229, 255, ${0.2 - distance/600})`;
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                        ctx.closePath();
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        init();
+        animate();
+
+        console.log("%cSYSTEM SECURE: ACESSO PERMITIDO", "color: #00E5FF; font-size: 20px; font-weight: bold; font-family: monospace;");
+        console.log("%cIago & Murilo // AI & Software Engineering // UFPR", "color: #888888; font-size: 14px; font-family: monospace;");
+    </script>
+</body>
+</html>
