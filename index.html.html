@@ -5,13 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iago & Murilo | AI & Software Engineering</title>
     
-  
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 
     <style>
-      
         :root {
             --bg-color: #050505;
             --text-primary: #F3F3F3;
@@ -39,7 +37,6 @@
             -webkit-font-smoothing: antialiased;
         }
 
-
         .custom-cursor {
             position: fixed;
             top: 0;
@@ -54,7 +51,6 @@
             transform: translate(-50%, -50%);
             transition: width 0.2s, height 0.2s;
         }
-
         
         #neural-canvas {
             position: fixed;
@@ -84,16 +80,16 @@
             font-family: 'Syne', sans-serif;
             line-height: 0.9;
             text-transform: uppercase;
+            overflow-wrap: break-word; /* Evita que palavras grandes quebrem o layout */
         }
 
-     
         .hero {
             position: relative;
             padding-top: 20vh;
         }
 
         .hero h1 {
-            font-size: clamp(4rem, 10vw, 12rem);
+            font-size: clamp(3.5rem, 10vw, 12rem);
             letter-spacing: -0.05em;
             margin-bottom: 2rem;
             color: transparent;
@@ -116,7 +112,6 @@
             padding-right: 20px;
         }
 
-       
         .about .grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -149,7 +144,6 @@
             text-transform: uppercase;
             letter-spacing: 2px;
         }
-
         
         .portfolio-grid {
             display: flex;
@@ -228,7 +222,6 @@
             font-size: 1.1rem;
             margin-bottom: 1.5rem;
         }
-
         
         .project-btn {
             display: inline-block;
@@ -249,7 +242,6 @@
             font-weight: 500;
         }
 
-       
         .contact {
             min-height: 60vh;
             justify-content: center;
@@ -259,7 +251,7 @@
         }
 
         .contact h2 {
-            font-size: clamp(4rem, 8vw, 10rem);
+            font-size: clamp(3rem, 8vw, 10rem);
             margin-bottom: 3rem;
         }
 
@@ -267,6 +259,7 @@
             display: flex;
             gap: 3rem;
             justify-content: center;
+            width: 100%;
         }
 
         .social-links a {
@@ -277,12 +270,13 @@
             letter-spacing: 2px;
             position: relative;
             overflow: hidden;
+            padding: 5px;
         }
 
         .social-links a::after {
             content: '';
             position: absolute;
-            bottom: -2px;
+            bottom: 0;
             left: 0;
             width: 100%;
             height: 1px;
@@ -295,9 +289,13 @@
             transform: translateX(0);
         }
 
+        /* Ajustes de Responsividade (Mobile) */
         @media (max-width: 768px) {
-            .about .grid, .project-card {
-                grid-template-columns: 1fr;
+            .hero {
+                padding-top: 15vh;
+            }
+            .hero h1 {
+                font-size: clamp(3rem, 12vw, 5rem);
             }
             .hero p.tagline {
                 margin-left: 0;
@@ -305,6 +303,15 @@
                 border-right: none;
                 border-left: 2px solid var(--accent);
                 padding-left: 20px;
+                font-size: 1.1rem;
+            }
+            .about .grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .project-card {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
             .project-image-wrapper {
                 height: 40vh;
@@ -313,9 +320,45 @@
                 align-items: flex-start;
                 text-align: left;
             }
+            .contact h2 {
+                /* Reduzimos o tamanho base de 4rem para 2.2rem para encaixar o START_TALKING */
+                font-size: clamp(2.2rem, 12vw, 4rem); 
+                margin-bottom: 2rem;
+            }
             .social-links {
                 flex-direction: column;
-                gap: 1.5rem;
+                gap: 1rem;
+                align-items: center;
+            }
+            /* Transforma os links em botões mais fáceis de tocar no mobile */
+            .social-links a {
+                width: 100%;
+                max-width: 300px;
+                padding: 15px 0;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                border-radius: 50px;
+                background-color: rgba(0, 229, 255, 0.05);
+                transition: all 0.3s ease;
+            }
+            .social-links a:active {
+                background-color: var(--accent);
+                color: var(--bg-color);
+            }
+            .social-links a::after {
+                display: none; /* Remove o hover de linha no mobile */
+            }
+        }
+
+        /* Desativa cursor modificado e restaura pointer nativo em dispositivos touch */
+        @media (pointer: coarse) {
+            .custom-cursor {
+                display: none !important;
+            }
+            * {
+                cursor: auto !important;
+            }
+            a, .hover-target, button {
+                cursor: pointer !important;
             }
         }
     </style>
@@ -327,7 +370,6 @@
 
     <div class="container">
         
-       
         <section class="hero">
             <h1>Iago <span>Silva</span><br>& Murilo <span>Bozolan</span></h1>
             <p class="tagline">
@@ -355,7 +397,6 @@
             
             <div class="portfolio-grid">
                 
-             
                 <a href="https://gr-barbearia-liard.vercel.app" target="_blank" class="project-card hover-target">
                     <div class="project-image-wrapper">
                         <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="GR Barbearia">
@@ -367,10 +408,8 @@
                     </div>
                 </a>
 
-           
                 <a href="https://inovapele.vercel.app" target="_blank" class="project-card hover-target">
                     <div class="project-image-wrapper">
-                        
                         <img src="image_20869e.jpg" alt="Inova Pele" style="object-fit: contain; padding: 2rem; background-color: #FF66A3;">
                     </div>
                     <div class="project-info">
@@ -380,7 +419,6 @@
                     </div>
                 </a>
 
-               
                 <a href="https://azmaringa.vercel.app" target="_blank" class="project-card hover-target">
                     <div class="project-image-wrapper">
                         <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="AZ Maringá">
@@ -395,38 +433,43 @@
             </div>
         </section>
 
-    
         <section class="contact">
             <h2>START_TALKING</h2>
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/iago-silva-3909773bb" target="_blank" class="hover-target">LinkedIn</a>
-               
+                
                 <a href="https://api.whatsapp.com/send?phone=5512996154214&text=vim%20do%20seu%20site%20e%20gostaria%20de%20contratar%20o%20servi%C3%A7o." target="_blank" class="hover-target">WhatsApp</a>
             </div>
         </section>
 
     </div>
 
- 
     <script>
         const cursor = document.getElementById('cursor');
         const hoverTargets = document.querySelectorAll('a, .hover-target');
 
+        // Impede a lógica do cursor rodar se o display for none (mobile)
         document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
+            if (window.getComputedStyle(cursor).display !== 'none') {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            }
         });
 
         hoverTargets.forEach(target => {
             target.addEventListener('mouseenter', () => {
-                cursor.style.width = '60px';
-                cursor.style.height = '60px';
-                cursor.style.background = 'white';
+                if (window.getComputedStyle(cursor).display !== 'none') {
+                    cursor.style.width = '60px';
+                    cursor.style.height = '60px';
+                    cursor.style.background = 'white';
+                }
             });
             target.addEventListener('mouseleave', () => {
-                cursor.style.width = '20px';
-                cursor.style.height = '20px';
-                cursor.style.background = 'var(--accent)';
+                if (window.getComputedStyle(cursor).display !== 'none') {
+                    cursor.style.width = '20px';
+                    cursor.style.height = '20px';
+                    cursor.style.background = 'var(--accent)';
+                }
             });
         });
 
@@ -436,17 +479,20 @@
             const wrapper = card.querySelector('.project-image-wrapper');
             
             card.addEventListener('mousemove', (e) => {
-                const rect = wrapper.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                const rotateX = ((y - centerY) / centerY) * -15;
-                const rotateY = ((x - centerX) / centerX) * 15;
-                
-                wrapper.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+                // Desativa animação 3D no mobile se preferir focar em performance
+                if(window.innerWidth > 768) {
+                    const rect = wrapper.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const rotateX = ((y - centerY) / centerY) * -15;
+                    const rotateY = ((x - centerX) / centerX) * 15;
+                    
+                    wrapper.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+                }
             });
 
             card.addEventListener('mouseleave', () => {
@@ -454,18 +500,22 @@
             });
             
             card.addEventListener('mouseenter', () => {
-                cursor.style.width = '80px';
-                cursor.style.height = '80px';
-                cursor.style.mixBlendMode = 'normal';
-                cursor.style.background = 'rgba(0, 229, 255, 0.2)';
-                cursor.style.backdropFilter = 'blur(4px)';
+                if (window.getComputedStyle(cursor).display !== 'none') {
+                    cursor.style.width = '80px';
+                    cursor.style.height = '80px';
+                    cursor.style.mixBlendMode = 'normal';
+                    cursor.style.background = 'rgba(0, 229, 255, 0.2)';
+                    cursor.style.backdropFilter = 'blur(4px)';
+                }
             });
             card.addEventListener('mouseleave', () => {
-                cursor.style.width = '20px';
-                cursor.style.height = '20px';
-                cursor.style.mixBlendMode = 'difference';
-                cursor.style.background = 'var(--accent)';
-                cursor.style.backdropFilter = 'none';
+                if (window.getComputedStyle(cursor).display !== 'none') {
+                    cursor.style.width = '20px';
+                    cursor.style.height = '20px';
+                    cursor.style.mixBlendMode = 'difference';
+                    cursor.style.background = 'var(--accent)';
+                    cursor.style.backdropFilter = 'none';
+                }
             });
         });
 
@@ -540,7 +590,9 @@
 
         function init() {
             particles = [];
-            let numberOfParticles = (width * height) / 9000;
+           
+            let divider = window.innerWidth > 768 ? 9000 : 15000; 
+            let numberOfParticles = (width * height) / divider;
             for (let i = 0; i < numberOfParticles; i++) {
                 particles.push(new Particle());
             }
@@ -574,6 +626,11 @@
 
         init();
         animate();
+
+       
+        window.addEventListener('resize', () => {
+            init();
+        });
 
         console.log("%cSYSTEM SECURE: ACESSO PERMITIDO", "color: #00E5FF; font-size: 20px; font-weight: bold; font-family: monospace;");
         console.log("%cIago & Murilo // AI & Software Engineering // UFPR", "color: #888888; font-size: 14px; font-family: monospace;");
