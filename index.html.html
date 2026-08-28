@@ -1,13 +1,3 @@
-Entendido! Realmente, sem as barras o design fica mais limpo e "humano", e focar apenas em Landing Pages por enquanto é uma ótima estratégia para fechar projetos mais rápidos.
-
-Fiz as seguintes alterações:
-1. **Removi todas as barras (`//`) e colchetes** dos menus e títulos.
-2. **Removi a seção de Serviços (Especialidades)**, deixando o site mais direto.
-3. **Apliquei SEO e GEO SEO no `<head>`**: Adicionei meta tags de descrição, palavras-chave (focadas em Landing Pages), tags para redes sociais (Open Graph) e as coordenadas geográficas focadas na região do Paraná (Jandaia do Sul / Maringá) para ajudar os clientes locais a acharem vocês no Google.
-
-Aqui está o código final atualizado. Basta copiar e substituir:
-
-```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -16,8 +6,8 @@ Aqui está o código final atualizado. Basta copiar e substituir:
     
     <!-- SEO Básico -->
     <title>Iago & Murilo | Criação de Landing Pages e Sites de Alta Conversão</title>
-    <meta name="description" content="Transformamos ideias em Landing Pages modernas, rápidas e focadas em conversão máxima. Desenvolvedores especialistas em Engenharia de Software e IA.">
-    <meta name="keywords" content="criação de sites, landing pages, desenvolvimento web, programador freelancer, sites rápidos, design moderno, Jandaia do Sul, Maringá, Paraná">
+    <meta name="description" content="Transformamos ideias em Landing Pages modernas, rápidas e focadas em conversão máxima. Desenvolvedores especialistas em Engenharia de Software e IA, atendendo todo o Brasil.">
+    <meta name="keywords" content="criação de sites, landing pages, desenvolvimento web, programador freelancer, sites rápidos, design moderno, Jandaia do Sul, Maringá, Paraná, Brasil">
     <meta name="author" content="Iago Silva & Murilo Bozolan">
     <meta name="robots" content="index, follow">
 
@@ -33,7 +23,7 @@ Aqui está o código final atualizado. Basta copiar e substituir:
     <meta property="og:description" content="Desenvolvimento de Landing Pages modernas, rápidas e funcionais para o seu negócio.">
     <meta property="og:site_name" content="System.Initiated">
     
-    <!-- Ícone da aba do navegador (Favicon Emoji) -->
+    <!-- Ícone da aba do navegador -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -69,14 +59,14 @@ Aqui está o código final atualizado. Basta copiar e substituir:
             -webkit-font-smoothing: antialiased;
         }
 
-        /* NAVBAR */
+        /* NAVBAR PREMIUM */
         .navbar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             padding: 1.5rem 0;
-            background: rgba(5, 5, 5, 0.6);
+            background: rgba(5, 5, 5, 0.7);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -103,19 +93,38 @@ Aqui está o código final atualizado. Basta copiar e substituir:
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         .nav-links a {
-            color: var(--text-primary);
+            color: var(--text-secondary);
             text-decoration: none;
-            font-family: monospace;
-            font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
             transition: color 0.3s ease;
+            position: relative;
         }
 
         .nav-links a:hover {
-            color: var(--accent);
+            color: var(--text-primary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         /* CURSOR E CANVAS */
@@ -177,10 +186,42 @@ Aqui está o código final atualizado. Basta copiar e substituir:
             transform: translateY(0);
         }
 
-        /* HERO */
+        /* HERO & BADGE NACIONAL */
         .hero {
             position: relative;
             padding-top: 20vh;
+        }
+
+        .national-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 18px;
+            background: rgba(0, 229, 255, 0.05);
+            border: 1px solid rgba(0, 229, 255, 0.2);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 229, 255, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(0, 229, 255, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 229, 255, 0); }
         }
 
         .hero h1 {
@@ -233,12 +274,16 @@ Aqui está o código final atualizado. Basta copiar e substituir:
         .ufpr-badge {
             display: inline-block;
             margin-top: 2rem;
-            padding: 10px 20px;
-            border: 1px solid var(--text-secondary);
-            border-radius: 50px;
-            font-size: 0.9rem;
+            padding: 8px 18px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 5px;
+            font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 2px;
+            color: var(--text-secondary);
+            background: rgba(255,255,255,0.02);
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
         }
         
         .tech-stack {
@@ -251,11 +296,12 @@ Aqui está o código final atualizado. Basta copiar e substituir:
         .tech-tag {
             padding: 6px 14px;
             background: rgba(0, 229, 255, 0.05);
-            border: 1px solid rgba(0, 229, 255, 0.2);
+            border: 1px solid rgba(0, 229, 255, 0.15);
             border-radius: 50px;
             font-size: 0.8rem;
             color: var(--accent);
-            font-family: monospace;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
             transition: all 0.3s ease;
         }
         
@@ -298,7 +344,7 @@ Aqui está o código final atualizado. Basta copiar e substituir:
             width: 100%;
             height: 60vh;
             overflow: hidden;
-            border-radius: 10px;
+            border-radius: 12px;
             transition: transform 0.1s ease-out;
             transform-style: preserve-3d;
             box-shadow: 0 20px 40px rgba(0,0,0,0.5);
@@ -366,12 +412,12 @@ Aqui está o código final atualizado. Basta copiar e substituir:
             font-weight: 500;
         }
 
-        /* CONTATO */
+        /* CONTATO PREMIUM CARDS */
         .contact {
             min-height: 80vh;
             justify-content: center;
             align-items: flex-start;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255,255,255,0.05);
         }
 
         .contact h2 {
@@ -389,22 +435,36 @@ Aqui está o código final atualizado. Basta copiar e substituir:
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 3rem;
+            gap: 2rem;
             width: 100%;
         }
 
+        .contact-group {
+            background: #090909;
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 2.5rem;
+            border-radius: 12px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        
+        .contact-group:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 229, 255, 0.3);
+        }
+
         .contact-group h3 {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
+            font-size: 0.85rem;
+            color: var(--accent);
             margin-bottom: 1.5rem;
-            letter-spacing: 1px;
-            font-family: monospace;
+            letter-spacing: 2px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
         }
 
         .contact-group a {
             color: var(--text-primary);
             text-decoration: none;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             display: block;
             margin-bottom: 1rem;
             transition: color 0.3s ease;
@@ -443,12 +503,13 @@ Aqui está o código final atualizado. Basta copiar e substituir:
             align-items: center;
             justify-content: center;
             padding: 14px 28px;
-            background: #111;
-            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
             border-radius: 50px;
             font-weight: 500;
             letter-spacing: 1px;
             transition: all 0.3s ease;
+            font-size: 0.95rem;
         }
 
         .contact-btn.whatsapp:hover {
@@ -460,13 +521,13 @@ Aqui está o código final atualizado. Basta copiar e substituir:
         .social-flex {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: 0.8rem;
         }
 
         /* RESPONSIVIDADE MOBILE */
         @media (max-width: 768px) {
             .nav-links {
-                gap: 1rem;
+                gap: 1.5rem;
             }
             .nav-links a {
                 font-size: 0.75rem;
@@ -505,7 +566,7 @@ Aqui está o código final atualizado. Basta copiar e substituir:
             }
             .contact-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 1.5rem;
             }
         }
 
@@ -532,10 +593,10 @@ Aqui está o código final atualizado. Basta copiar e substituir:
         <div class="nav-container">
             <a href="#home" class="logo hover-target">SYS.INIT</a>
             <div class="nav-links">
-                <a href="#home" class="hover-target">INÍCIO</a>
-                <a href="#about" class="hover-target">SOBRE</a>
-                <a href="#portfolio" class="hover-target">PROJETOS</a>
-                <a href="#contact" class="hover-target">CONTATO</a>
+                <a href="#home" class="hover-target">Início</a>
+                <a href="#about" class="hover-target">Sobre</a>
+                <a href="#portfolio" class="hover-target">Projetos</a>
+                <a href="#contact" class="hover-target">Contato</a>
             </div>
         </div>
     </nav>
@@ -546,9 +607,12 @@ Aqui está o código final atualizado. Basta copiar e substituir:
     <div class="container">
         
         <section class="hero" id="home">
-            <h1 class="reveal">Iago <span>Silva</span><br>& Murilo <span>Bozolan</span></h1>
+            <div class="national-badge reveal">
+                <span class="pulse-dot"></span> Atendemos todo o Brasil
+            </div>
+            <h1 class="reveal" style="transition-delay: 0.1s;">Iago <span>Silva</span><br>& Murilo <span>Bozolan</span></h1>
             <p class="tagline reveal" style="transition-delay: 0.2s;">
-               Transformamos ideias em sites modernos, rápidos e focados em conversão
+               Transformamos ideias em Landing Pages modernas, rápidas e focadas em conversão máxima.
             </p>
         </section>
 
@@ -559,7 +623,7 @@ Aqui está o código final atualizado. Basta copiar e substituir:
                 <div></div>
                 <div class="about-text reveal">
                     <p>
-                        Somos estudantes de <strong>Inteligência Artificial e Engenharia de Software</strong> e transformamos nossas ideias em projetos reais. Unimos programação, design e tecnologia para criar experiências digitais modernas, funcionais e pensadas para cada negócio.
+                        Somos estudantes de <strong>Inteligência Artificial e Engenharia de Software</strong> e transformamos nossas ideias em projetos reais. Unimos programação, design e tecnologia para criar experiências digitais premium pensadas para gerar resultados para o seu negócio.
                     </p>
                     <div class="ufpr-badge">UFPR - Jandaia do Sul</div>
                     
@@ -576,7 +640,7 @@ Aqui está o código final atualizado. Basta copiar e substituir:
 
         <!-- PORTFÓLIO -->
         <section class="portfolio" id="portfolio">
-            <h2 class="reveal">Projetos</h2>
+            <h2 class="reveal">Projetos em Destaque</h2>
             
             <div class="portfolio-grid">
                 
@@ -616,31 +680,31 @@ Aqui está o código final atualizado. Basta copiar e substituir:
             </div>
         </section>
 
-        <!-- CONTATO -->
+        <!-- CONTATO PREMIUM -->
         <section class="contact" id="contact">
-            <h2 class="reveal">START_TALKING</h2>
+            <h2 class="reveal">Start Talking</h2>
             <p class="contact-subtitle reveal">Tem uma ideia ou projeto? Vamos construir juntos.</p>
             
             <div class="contact-grid reveal" style="transition-delay: 0.2s;">
                 
-                <div class="contact-group">
+                <div class="contact-group hover-target">
                     <h3>MENSAGEM RÁPIDA</h3>
-                    <a href="https://api.whatsapp.com/send?phone=5512996154214&text=Ol%C3%A1!%20Vim%20pelo%20portf%C3%B3lio%20de%20voc%C3%AAs%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.%20Podemos%20falar%3F" target="_blank" class="hover-target contact-btn whatsapp">WhatsApp Direto ↗</a>
+                    <a href="https://api.whatsapp.com/send?phone=5512996154214&text=Ol%C3%A1!%20Vim%20pelo%20portf%C3%B3lio%20de%20voc%C3%AAs%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.%20Podemos%20falar%3F" target="_blank" class="contact-btn whatsapp">WhatsApp Direto ↗</a>
                 </div>
 
-                <div class="contact-group">
-                    <h3>E-MAILS DA UFPR</h3>
+                <div class="contact-group hover-target">
+                    <h3>E-MAILS INSTITUCIONAIS</h3>
                     <div class="social-flex">
-                        <a href="mailto:iagosilva@ufpr.br" class="hover-target link-line">iagosilva@ufpr.br</a>
-                        <a href="mailto:murilobozolan@ufpr.br" class="hover-target link-line">murilobozolan@ufpr.br</a>
+                        <a href="mailto:iagosilva@ufpr.br" class="link-line">iagosilva@ufpr.br</a>
+                        <a href="mailto:murilobozolan@ufpr.br" class="link-line">murilobozolan@ufpr.br</a>
                     </div>
                 </div>
 
-                <div class="contact-group">
+                <div class="contact-group hover-target">
                     <h3>REDES E CÓDIGOS</h3>
                     <div class="social-flex">
-                        <a href="https://www.linkedin.com/in/iago-silva-3909773bb" target="_blank" class="hover-target link-line">LinkedIn</a>
-                        <a href="https://github.com/iago012h" target="_blank" class="hover-target link-line">GitHub (Iago)</a>
+                        <a href="https://www.linkedin.com/in/iago-silva-3909773bb" target="_blank" class="link-line">LinkedIn</a>
+                        <a href="https://github.com/iago012h" target="_blank" class="link-line">GitHub (Iago)</a>
                     </div>
                 </div>
 
@@ -649,8 +713,8 @@ Aqui está o código final atualizado. Basta copiar e substituir:
 
         <!-- FOOTER -->
         <footer>
-            <div style="padding: 2rem 0; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; color: var(--muted); font-size: 0.8rem; font-family: monospace;">
-                © 2026 Iago Silva & Murilo Bozolan - System.Initiated
+            <div style="padding: 2.5rem 0; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; color: var(--text-secondary); font-size: 0.85rem; font-family: 'Inter', sans-serif;">
+                © 2026 Iago Silva & Murilo Bozolan - Engenharia de Software UFPR
             </div>
         </footer>
 
@@ -864,4 +928,3 @@ Aqui está o código final atualizado. Basta copiar e substituir:
     </script>
 </body>
 </html>
-```
