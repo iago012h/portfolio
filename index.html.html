@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO Básico -->
-    <title>Iago & Murilo | Criação de Landing Pages e Sites de Alta Conversão</title>
+    <title>IAMU | Criação de Landing Pages e Sites de Alta Conversão</title>
     <meta name="description" content="Transformamos ideias em Landing Pages modernas, rápidas e focadas em conversão máxima. Desenvolvedores especialistas em Engenharia de Software, atendendo todo o Brasil.">
     <meta name="keywords" content="criação de sites, landing pages, desenvolvimento web, programador freelancer, sites rápidos, design moderno, Jandaia do Sul, Maringá, Paraná, Brasil">
     <meta name="author" content="Iago Silva & Murilo Bozolan">
@@ -19,12 +19,12 @@
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Iago & Murilo | Landing Pages de Alta Conversão">
+    <meta property="og:title" content="IAMU | Landing Pages de Alta Conversão">
     <meta property="og:description" content="Desenvolvimento de Landing Pages modernas, rápidas e funcionais para o seu negócio.">
-    <meta property="og:site_name" content="Iago & Murilo">
+    <meta property="og:site_name" content="IAMU">
     
-    <!-- Ícone da aba do navegador -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+    <!-- NOVO ÍCONE DA ABA DO NAVEGADOR (Favicon com a 2ª Imagem) -->
+    <link rel="icon" href="logo-iamu-icon.png" type="image/png">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -65,7 +65,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            padding: 1.5rem 0;
+            padding: 1rem 0;
             background: rgba(5, 5, 5, 0.7);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
@@ -82,13 +82,24 @@
             align-items: center;
         }
 
+        /* CONFIGURAÇÃO DA NOVA LOGO IMAGEM */
         .logo {
-            color: var(--accent);
+            display: flex;
+            align-items: center;
             text-decoration: none;
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            font-size: 1.1rem;
-            letter-spacing: 2px;
+        }
+
+        .logo img {
+            height: 38px; /* Tamanho elegante na navbar */
+            width: auto;
+            /* O SEGREDO: Isso remove o fundo preto da imagem automaticamente! */
+            mix-blend-mode: screen; 
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+        
+        .logo:hover img {
+            opacity: 1;
         }
 
         .nav-links {
@@ -539,19 +550,22 @@
             gap: 0.8rem;
         }
 
-        /* RESPONSIVIDADE MOBILE */
+        /* RESPONSIVIDADE MOBILE: Ajustado para mostrar a logo */
         @media (max-width: 768px) {
-            .nav-links {
-                gap: 1.5rem;
-            }
-            .nav-links a {
-                font-size: 0.75rem;
+            .nav-container {
+                justify-content: space-between;
             }
             .logo {
-                display: none;
+                display: flex !important;
             }
-            .nav-container {
-                justify-content: center;
+            .logo img {
+                height: 28px; /* Menor no celular para não espremer o menu */
+            }
+            .nav-links {
+                gap: 1rem;
+            }
+            .nav-links a {
+                font-size: 0.7rem;
             }
             .hero {
                 padding-top: 15vh;
@@ -606,7 +620,10 @@
 
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#home" class="logo hover-target">IAGO & MURILO</a>
+            <!-- NOVA LOGO COLOCADA AQUI -->
+            <a href="#home" class="logo hover-target">
+                <img src="logo-iamu.png" alt="IAMU Logo">
+            </a>
             <div class="nav-links">
                 <a href="#home" class="hover-target">Início</a>
                 <a href="#about" class="hover-target">Sobre</a>
@@ -617,7 +634,6 @@
     </nav>
 
     <div class="custom-cursor" id="cursor"></div>
-    <!-- Novo Canvas (Sem Galáxia, apenas Glow Interativo) -->
     <canvas id="interactive-canvas"></canvas>
 
     <div class="container">
