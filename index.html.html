@@ -3,52 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO Básico -->
-    <title>Iago & Murilo | Criação de Landing Pages e Sites de Alta Conversão</title>
-    <meta name="description" content="Transformamos ideias em Landing Pages modernas, rápidas e focadas em conversão máxima. Desenvolvedores especialistas em Engenharia de Software e IA, atendendo todo o Brasil.">
-    <meta name="keywords" content="criação de sites, landing pages, desenvolvimento web, programador freelancer, sites rápidos, design moderno, Jandaia do Sul, Maringá, Paraná, Brasil">
-    <meta name="author" content="Iago Silva & Murilo Bozolan">
-    <meta name="robots" content="index, follow">
-
-    <!-- GEO SEO (Localização) -->
-    <meta name="geo.region" content="BR-PR" />
-    <meta name="geo.placename" content="Jandaia do Sul" />
-    <meta name="geo.position" content="-23.5983;-51.6433" />
-    <meta name="ICBM" content="-23.5983, -51.6433" />
-
-    <!-- Open Graph / Social Media -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Iago & Murilo | Landing Pages de Alta Conversão">
-    <meta property="og:description" content="Desenvolvimento de Landing Pages modernas, rápidas e funcionais para o seu negócio.">
-    <meta property="og:site_name" content="System.Initiated">
-    
-    <!-- Ícone da aba do navegador -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+    <title>Iago Silva & Murilo Bozolan | Engenharia de Conversão</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <!-- Mistura luxuosa de fonte moderna (Inter) com editorial clássica (Playfair Display) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --bg-color: #050505;
-            --text-primary: #F3F3F3;
-            --text-secondary: #888888;
-            --accent: #00E5FF; 
-            --cursor-size: 20px;
+            /* Cores Estilo Vercel / Stripe (Dark Mode Premium) */
+            --bg-color: #0E0E10;
+            --bg-secondary: #161619;
+            --text-primary: #EDEDED;
+            --text-secondary: #999999;
+            --accent: #CFA67E; /* Tom bronze/bege sofisticado */
+            --border: rgba(255, 255, 255, 0.06);
+            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            cursor: none;
         }
 
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 80px;
         }
 
         body {
@@ -57,38 +38,94 @@
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+            position: relative;
         }
 
-        /* NAVBAR PREMIUM */
+        /* 1. Ruído Texturizado Estilo Filme (Premium Look) */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.035"/%3E%3C/svg%3E');
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* 2. Brilho Ambiente Discreto (Elimina o preto sólido chapado) */
+        .ambient-glow-1 {
+            position: absolute;
+            top: -10%; left: -20%;
+            width: 70vw; height: 70vw;
+            background: radial-gradient(circle, rgba(207, 166, 126, 0.05) 0%, transparent 60%);
+            border-radius: 50%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .ambient-glow-2 {
+            position: absolute;
+            bottom: 20%; right: -20%;
+            width: 50vw; height: 50vw;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.02) 0%, transparent 60%);
+            border-radius: 50%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        section {
+            padding: 15vh 0;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 4rem;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1.5rem;
+        }
+
+        /* NAVBAR */
         .navbar {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
+            top: 0; left: 0; width: 100%;
             padding: 1.5rem 0;
-            background: rgba(5, 5, 5, 0.7);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(14, 14, 16, 0.8);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
             z-index: 1000;
         }
 
         .nav-container {
-            width: 90%;
-            max-width: 1400px;
-            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            color: var(--accent);
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--text-primary);
             text-decoration: none;
-            font-family: 'Syne', sans-serif;
-            font-weight: 800;
-            font-size: 1.2rem;
-            letter-spacing: 2px;
+            font-size: 1rem;
         }
 
         .nav-links {
@@ -99,546 +136,362 @@
         .nav-links a {
             color: var(--text-secondary);
             text-decoration: none;
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
             font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            transition: color 0.3s ease;
-            position: relative;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
         }
 
         .nav-links a:hover {
             color: var(--text-primary);
         }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -6px;
-            left: 0;
-            width: 0%;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
 
-        /* CURSOR E CANVAS */
-        .custom-cursor {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: var(--cursor-size);
-            height: var(--cursor-size);
-            background: var(--accent);
-            border-radius: 50%;
-            pointer-events: none;
-            mix-blend-mode: difference;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            transition: width 0.2s, height 0.2s;
-        }
-        
-        #neural-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-            opacity: 0.6;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        section {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 10vh 0;
-        }
-
-        h1, h2, h3 {
-            font-family: 'Syne', sans-serif;
-            line-height: 0.9;
-            text-transform: uppercase;
-            overflow-wrap: break-word;
-        }
-
-        /* ANIMAÇÃO SCROLL REVEAL */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* HERO & BADGE NACIONAL */
+        /* HERO - OBRIGATÓRIO: Tipografia Solid/Outline */
         .hero {
-            position: relative;
-            padding-top: 20vh;
-        }
-
-        .national-badge {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            width: fit-content;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-        }
-
-        .pulse-dot {
-            width: 8px;
-            height: 8px;
-            background-color: var(--accent);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--accent);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 229, 255, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(0, 229, 255, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 229, 255, 0); }
+            padding-top: 25vh;
+            align-items: flex-start;
         }
 
         .hero h1 {
-            font-size: clamp(3.5rem, 10vw, 12rem);
-            letter-spacing: -0.05em;
+            font-size: clamp(3.5rem, 9vw, 9rem);
+            line-height: 1.05;
+            letter-spacing: -0.02em;
             margin-bottom: 2rem;
+        }
+
+        .hero h1 .outline {
             color: transparent;
-            -webkit-text-stroke: 1px var(--text-primary);
-            position: relative;
+            -webkit-text-stroke: 1px var(--text-secondary);
         }
-
-        .hero h1 span {
+        
+        .hero h1 .solid {
             color: var(--text-primary);
-            -webkit-text-stroke: 0;
         }
 
-        .hero p.tagline {
-            font-size: clamp(1rem, 2vw, 1.5rem);
-            max-width: 600px;
+        .hero-desc {
+            font-size: clamp(1rem, 1.5vw, 1.25rem);
             color: var(--text-secondary);
-            margin-left: auto;
-            text-align: right;
-            border-right: 2px solid var(--accent);
-            padding-right: 20px;
+            max-width: 500px;
+            line-height: 1.6;
+            font-weight: 300;
+            border-left: 1px solid var(--accent);
+            padding-left: 20px;
         }
 
-        /* SOBRE */
-        .about .grid {
+        /* SOBRE NÓS */
+        .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
-            align-items: end;
-        }
-
-        .about h2 {
-            font-size: clamp(3rem, 6vw, 6rem);
-            grid-column: 1 / -1;
         }
 
         .about-text {
-            font-size: 1.25rem;
-            line-height: 1.6;
+            font-size: 1.1rem;
+            line-height: 1.8;
             color: var(--text-secondary);
+            font-weight: 300;
         }
 
         .about-text strong {
             color: var(--text-primary);
+            font-weight: 500;
         }
 
-        .ufpr-badge {
-            display: inline-block;
-            margin-top: 2rem;
-            padding: 8px 18px;
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 5px;
-            font-size: 0.85rem;
+        .about-badges {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .badge-title {
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: var(--text-secondary);
-            background: rgba(255,255,255,0.02);
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
+            margin-bottom: 0.5rem;
         }
-        
-        .tech-stack {
+
+        .badge-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 2rem;
+            gap: 12px;
         }
 
-        .tech-tag {
-            padding: 6px 14px;
-            background: rgba(0, 229, 255, 0.05);
-            border: 1px solid rgba(0, 229, 255, 0.15);
-            border-radius: 50px;
-            font-size: 0.8rem;
-            color: var(--accent);
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .tech-tag:hover {
-            background: var(--accent);
-            color: var(--bg-color);
+        .badge {
+            padding: 8px 16px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            background: rgba(255,255,255,0.02);
+            transition: var(--transition);
         }
 
-        /* PORTFÓLIO */
-        .portfolio h2 {
-            font-size: clamp(3rem, 6vw, 6rem);
+        .badge:hover {
+            border-color: var(--text-secondary);
         }
 
-        .portfolio-grid {
+        /* PORTFOLIO EDITORIAL (Assimétrico) */
+        .portfolio-list {
             display: flex;
             flex-direction: column;
-            gap: 10vh;
-            margin-top: 10vh;
+            gap: 10rem;
+            margin-top: 2rem;
         }
 
         .project-card {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 5rem;
             align-items: center;
             text-decoration: none;
             color: inherit;
-            perspective: 1000px; 
+            perspective: 1200px; /* Base pro JS 3D */
         }
 
         .project-card:nth-child(even) {
-            direction: rtl;
+            grid-template-columns: 1fr 1.2fr;
         }
-        .project-card:nth-child(even) > * {
-            direction: ltr;
+        
+        .project-card:nth-child(even) .project-image-wrapper {
+            order: 2;
+        }
+        .project-card:nth-child(even) .project-info {
+            order: 1;
         }
 
+        /* OBRIGATÓRIO: Efeito 3D refinado e mais leve */
         .project-image-wrapper {
             position: relative;
             width: 100%;
-            height: 60vh;
+            height: 65vh;
+            border-radius: 8px;
             overflow: hidden;
-            border-radius: 12px;
-            transition: transform 0.1s ease-out;
+            transition: transform 0.1s ease-out, box-shadow 0.6s ease;
             transform-style: preserve-3d;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            background: #111; 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+            background: #111;
         }
 
         .project-image-wrapper img {
             width: 100%;
             height: 100%;
-            object-fit: cover; 
-            filter: grayscale(100%);
-            transition: filter 0.5s ease;
+            object-fit: cover;
+            filter: grayscale(80%) contrast(1.1);
+            transition: filter 0.6s ease, transform 0.8s ease;
+        }
+
+        .project-card:hover .project-image-wrapper {
+            box-shadow: 0 40px 80px rgba(0,0,0,0.6);
         }
 
         .project-card:hover .project-image-wrapper img {
-            filter: grayscale(0%);
+            filter: grayscale(0%) contrast(1);
+            transform: scale(1.04);
         }
 
         .project-info {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
         }
-        
-        .project-card:nth-child(even) .project-info {
-            align-items: flex-end;
-            text-align: right;
+
+        .project-tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
         }
 
         .project-info h3 {
-            font-size: clamp(2rem, 4vw, 4rem);
-            margin-bottom: 1rem;
-            transition: color 0.3s ease;
-        }
-
-        .project-card:hover .project-info h3 {
-            color: var(--accent);
+            font-size: clamp(2rem, 3.5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
         }
 
         .project-info p {
             color: var(--text-secondary);
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-        
-        .feature-list {
-            font-size: 0.9rem;
-            color: #666;
+            font-size: 1rem;
+            line-height: 1.7;
+            font-weight: 300;
             margin-bottom: 2rem;
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
         }
-        
-        .project-btn {
-            display: inline-block;
-            padding: 12px 28px;
-            border: 1px solid var(--text-secondary);
-            border-radius: 50px;
+
+        .btn-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
             font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-primary);
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover .project-btn {
-            background: var(--accent);
-            border-color: var(--accent);
-            color: var(--bg-color);
-            font-weight: 500;
-        }
-
-        /* CONTATO PREMIUM CARDS */
-        .contact {
-            min-height: 80vh;
-            justify-content: center;
-            align-items: flex-start;
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .contact h2 {
-            font-size: clamp(3rem, 8vw, 5rem);
-            margin-bottom: 0.5rem;
-            color: var(--accent);
-        }
-        
-        .contact-subtitle {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            margin-bottom: 4rem;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            width: 100%;
-        }
-
-        .contact-group {
-            background: #090909;
-            border: 1px solid rgba(255,255,255,0.05);
-            padding: 2.5rem;
-            border-radius: 12px;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-        
-        .contact-group:hover {
-            transform: translateY(-5px);
-            border-color: rgba(0, 229, 255, 0.3);
-        }
-
-        .contact-group h3 {
-            font-size: 0.85rem;
-            color: var(--accent);
-            margin-bottom: 1.5rem;
-            letter-spacing: 2px;
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-        }
-
-        .contact-group a {
             color: var(--text-primary);
             text-decoration: none;
-            font-size: 1.05rem;
-            display: block;
-            margin-bottom: 1rem;
-            transition: color 0.3s ease;
-        }
-
-        .link-line {
-            position: relative;
-            display: inline-block !important;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            border-bottom: 1px solid transparent;
+            padding-bottom: 4px;
             width: fit-content;
         }
 
-        .link-line::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background: var(--accent);
-            transform: scaleX(0);
-            transform-origin: right;
+        .btn-link::after {
+            content: '→';
             transition: transform 0.3s ease;
         }
 
-        .link-line:hover::after {
-            transform: scaleX(1);
-            transform-origin: left;
-        }
-        
-        .link-line:hover {
+        .btn-link:hover {
             color: var(--accent);
+            border-bottom-color: var(--accent);
         }
 
-        .contact-btn {
-            display: inline-flex !important;
-            align-items: center;
-            justify-content: center;
-            padding: 14px 28px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 50px;
+        .btn-link:hover::after {
+            transform: translateX(6px);
+        }
+
+        /* CONTATO MINIMALISTA */
+        .contact {
+            text-align: left;
+            min-height: 60vh;
+        }
+
+        .contact h2 {
+            font-size: clamp(2.5rem, 5vw, 5rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 4rem;
+            font-weight: 300;
+        }
+
+        .contact-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            border-top: 1px solid var(--border);
+            padding-top: 4rem;
+        }
+
+        .contact-item h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
             font-weight: 500;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            font-size: 0.95rem;
         }
 
-        .contact-btn.whatsapp:hover {
-            background: #25D366; 
-            border-color: #25D366;
-            color: #000;
+        .contact-item a {
+            display: block;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            transition: var(--transition);
+        }
+
+        .contact-item a:hover {
+            color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        /* SCROLL REVEAL FADE UP */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1), transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2.5rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 900px) {
+            .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .project-card, .project-card:nth-child(even) { grid-template-columns: 1fr; gap: 2rem; }
+            .project-image-wrapper { height: 45vh; order: 1 !important; }
+            .project-info { order: 2 !important; }
+            .hero h1 { font-size: 3.5rem; }
+            nav .nav-links { display: none; }
+            footer { flex-direction: column; gap: 1rem; text-align: center; }
         }
         
-        .social-flex {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-        }
-
-        /* RESPONSIVIDADE MOBILE */
-        @media (max-width: 768px) {
-            .nav-links {
-                gap: 1.5rem;
-            }
-            .nav-links a {
-                font-size: 0.75rem;
-            }
-            .logo {
-                display: none;
-            }
-            .nav-container {
-                justify-content: center;
-            }
-            .hero {
-                padding-top: 15vh;
-            }
-            .hero p.tagline {
-                margin-left: 0;
-                text-align: left;
-                border-right: none;
-                border-left: 2px solid var(--accent);
-                padding-left: 20px;
-                font-size: 1.1rem;
-            }
-            .about .grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            .project-card {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            .project-image-wrapper {
-                height: 40vh;
-            }
-            .project-card:nth-child(even) .project-info {
-                align-items: flex-start;
-                text-align: left;
-            }
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-        }
-
-        /* AJUSTES PARA DISPOSITIVOS TOUCH */
+        /* Desativa o tilt no celular */
         @media (pointer: coarse) {
-            .custom-cursor {
-                display: none !important;
-            }
-            * {
-                cursor: auto !important;
-            }
-            a, .hover-target, button {
-                cursor: pointer !important;
-            }
-            .project-image-wrapper img {
-                filter: grayscale(0%);
-            }
+            .project-image-wrapper { transform: none !important; }
+            .project-image-wrapper img { filter: grayscale(0%); }
         }
     </style>
 </head>
 <body>
 
+    <!-- Fundo Orgânico -->
+    <div class="ambient-glow-1"></div>
+    <div class="ambient-glow-2"></div>
+
     <nav class="navbar">
-        <div class="nav-container">
-            <a href="#home" class="logo hover-target">SYS.INIT</a>
+        <div class="container nav-container">
+            <a href="#home" class="logo">Iago & Murilo</a>
             <div class="nav-links">
-                <a href="#home" class="hover-target">Início</a>
-                <a href="#about" class="hover-target">Sobre</a>
-                <a href="#portfolio" class="hover-target">Projetos</a>
-                <a href="#contact" class="hover-target">Contato</a>
+                <a href="#about">Sobre nós</a>
+                <a href="#portfolio">Projetos</a>
+                <a href="#contact">Contato</a>
             </div>
         </div>
     </nav>
 
-    <div class="custom-cursor" id="cursor"></div>
-    <canvas id="neural-canvas"></canvas>
-
     <div class="container">
         
+        <!-- HERO -->
         <section class="hero" id="home">
-            <div class="national-badge reveal">
-                <span class="pulse-dot"></span> Atendemos todo o Brasil
-            </div>
-            <h1 class="reveal" style="transition-delay: 0.1s;">Iago <span>Silva</span><br>& Murilo <span>Bozolan</span></h1>
-            <p class="tagline reveal" style="transition-delay: 0.2s;">
-               Transformamos ideias em Landing Pages modernas, rápidas e focadas em conversão máxima.
+            <h1 class="reveal">
+                <span class="outline">Iago</span> <span class="solid">Silva</span><br>
+                <span class="outline">& Murilo</span> <span class="solid">Bozolan</span>
+            </h1>
+            <p class="hero-desc reveal" style="transition-delay: 0.1s;">
+               Traduzimos complexidade em elegância. Desenvolvedores focados em arquitetar Landing Pages e plataformas premium para negócios que exigem alta conversão e estética irretocável.
             </p>
         </section>
 
         <!-- SOBRE NÓS -->
         <section class="about" id="about">
-            <h2 class="reveal">System.<br>Initiated</h2>
-            <div class="grid">
-                <div></div>
+            <h2 class="section-title reveal">Sobre nós</h2>
+            <div class="about-grid">
                 <div class="about-text reveal">
                     <p>
-                        Somos estudantes de <strong>Inteligência Artificial e Engenharia de Software</strong> e transformamos nossas ideias em projetos reais. Unimos programação, design e tecnologia para criar experiências digitais premium pensadas para gerar resultados para o seu negócio.
+                        Somos estudantes de <strong>Engenharia de Software e Inteligência Artificial na Universidade Federal do Paraná (UFPR)</strong>. Nossa metodologia une o mais alto rigor técnico da programação com o refinamento visual exigido pelas melhores agências digitais do mundo.
+                        <br><br>
+                        Construímos produtos digitais autênticos. Sem templates, sem frameworks pesados. Apenas código limpo, design minimalista e foco absoluto em guiar o usuário até o fechamento de um negócio.
                     </p>
-                    <div class="ufpr-badge">UFPR - Jandaia do Sul</div>
-                    
-                    <div class="tech-stack hover-target">
-                        <span class="tech-tag">React / Next.js</span>
-                        <span class="tech-tag">Python / IA</span>
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">Firebase / Cloud</span>
-                        <span class="tech-tag">UI/UX Design</span>
+                </div>
+                <div class="about-badges reveal" style="transition-delay: 0.1s;">
+                    <div>
+                        <div class="badge-title">Stack Técnico</div>
+                        <div class="badge-list">
+                            <span class="badge">JavaScript (Vanilla)</span>
+                            <span class="badge">React / Next.js</span>
+                            <span class="badge">Node.js</span>
+                            <span class="badge">UI/UX Editorial</span>
+                        </div>
+                    </div>
+                    <div style="margin-top: 1.5rem;">
+                        <div class="badge-title">Acadêmico</div>
+                        <div class="badge-list">
+                            <span class="badge">UFPR - Campus Jandaia do Sul</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -646,140 +499,99 @@
 
         <!-- PORTFÓLIO -->
         <section class="portfolio" id="portfolio">
-            <h2 class="reveal">Projetos em Destaque</h2>
+            <h2 class="section-title reveal">Obras Selecionadas</h2>
             
-            <div class="portfolio-grid">
+            <div class="portfolio-list">
                 
-                <!-- NOVO PROJETO ADICIONADO: Arquitetura com Chatbot Local -->
-                <a href="https://exemploarquiteto.vercel.app" target="_blank" class="project-card hover-target reveal">
+                <!-- PROJETO 1 -->
+                <a href="https://exemploarquiteto.vercel.app" target="_blank" class="project-card reveal">
                     <div class="project-image-wrapper">
                         <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Arquitetura Premium">
                     </div>
                     <div class="project-info">
-                        <h3>Arch & Design Premium</h3>
+                        <div class="project-tag">Landing Page & Automação</div>
+                        <h3>Arch & Design</h3>
                         <p>
-                            Experiência digital premium projetada para captação extrema de leads. O grande diferencial é um <strong>Funil de Qualificação Interativo</strong> desenvolvido inteiramente do zero através de uma Máquina de Estados (State Machine) em Vanilla JS.
+                            Experiência digital projetada para captação de leads de alto padrão. O destaque deste projeto é um <strong>Funil de Qualificação Interativo</strong> embutido. Desenvolvido inteiramente através de uma Máquina de Estados (State Machine) nativa, ele oferece saudações dinâmicas, gatilhos de engajamento baseados em tempo e integração direta com WhatsApp. Performance absoluta com Lighthouse Score 100.
                         </p>
-                        <div class="feature-list">
-                            <strong>Engenharia de Conversão:</strong> Saudação dinâmica (Time-based), gatilho proativo de engajamento aos 7s, e qualificação automatizada integrando com WhatsApp Web. Zero dependências e Lighthouse Score 100.
-                        </div>
-                        <span class="project-btn">Acesse aqui o site ↗</span>
+                        <span class="btn-link">Visualizar Projeto</span>
                     </div>
                 </a>
 
-                <!-- PROJETOS ANTIGOS MANTIDOS -->
-                <a href="https://gr-barbearia-liard.vercel.app" target="_blank" class="project-card hover-target reveal">
+                <!-- PROJETO 2 -->
+                <a href="https://gr-barbearia-liard.vercel.app" target="_blank" class="project-card reveal">
                     <div class="project-image-wrapper">
                         <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="GR Barbearia">
                     </div>
                     <div class="project-info">
+                        <div class="project-tag">Plataforma SaaS</div>
                         <h3>GR Barbearia</h3>
-                        <p>Plataforma digital para gestão e agendamento, combinando estética moderna com usabilidade direta.</p>
-                        <span class="project-btn">Acesse aqui o site ↗</span>
+                        <p>
+                            Sistema completo para gestão de horários e agendamento de clientes. A interface foi construída para eliminar o atrito cognitivo do usuário final, garantindo uma jornada de reserva em poucos cliques aliada a uma estética escura, masculina e moderna.
+                        </p>
+                        <span class="btn-link">Visualizar Projeto</span>
                     </div>
                 </a>
 
-                <a href="https://inovapele.vercel.app" target="_blank" class="project-card hover-target reveal">
-                    <div class="project-image-wrapper">
-                        <img src="image_20869e.jpg" alt="Inova Pele" style="object-fit: contain; padding: 2rem; background-color: #FF66A3;">
-                    </div>
-                    <div class="project-info">
-                        <h3>Inova Pele</h3>
-                        <p>Landing page mobile-first de alta conversão para clínica de estética, projetada com performance extrema.</p>
-                        <span class="project-btn">Acesse aqui o site ↗</span>
-                    </div>
-                </a>
-
-                <a href="https://azmaringa.vercel.app" target="_blank" class="project-card hover-target reveal">
+                <!-- PROJETO 3 -->
+                <a href="https://azmaringa.vercel.app" target="_blank" class="project-card reveal">
                     <div class="project-image-wrapper">
                         <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="AZ Maringá">
                     </div>
                     <div class="project-info">
+                        <div class="project-tag">Presença Corporativa</div>
                         <h3>AZ Maringá</h3>
-                        <p>Interface corporativa imersiva focada em apresentar autoridade de marca através de design minimalista.</p>
-                        <span class="project-btn">Acesse aqui o site ↗</span>
+                        <p>
+                            Interface B2B que transmite autoridade imediata. Focamos em uma tipografia limpa, hierarquia visual impecável e espaçamentos amplos (white-space) para apresentar o valor da marca de forma imersiva e direta ao ponto.
+                        </p>
+                        <span class="btn-link">Visualizar Projeto</span>
                     </div>
                 </a>
 
             </div>
         </section>
 
-        <!-- CONTATO PREMIUM -->
+        <!-- CONTATO -->
         <section class="contact" id="contact">
-            <h2 class="reveal">Start Talking</h2>
-            <p class="contact-subtitle reveal">Tem uma ideia ou projeto? Vamos construir juntos.</p>
+            <h2 class="reveal">Vamos criar algo juntos.</h2>
+            <p class="contact-subtitle reveal" style="transition-delay: 0.1s;">Temos disponibilidade para novos projetos de alta performance.</p>
             
-            <div class="contact-grid reveal" style="transition-delay: 0.2s;">
-                
-                <div class="contact-group hover-target">
-                    <h3>MENSAGEM RÁPIDA</h3>
-                    <a href="https://api.whatsapp.com/send?phone=5512996154214&text=Ol%C3%A1!%20Vim%20pelo%20portf%C3%B3lio%20de%20voc%C3%AAs%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.%20Podemos%20falar%3F" target="_blank" class="contact-btn whatsapp">WhatsApp Direto ↗</a>
+            <div class="contact-links reveal" style="transition-delay: 0.2s;">
+                <div class="contact-item">
+                    <h4>Iniciar Conversa</h4>
+                    <a href="https://api.whatsapp.com/send?phone=5512996154214" target="_blank">WhatsApp Direto ↗</a>
                 </div>
-
-                <div class="contact-group hover-target">
-                    <h3>E-MAILS</h3>
-                    <div class="social-flex">
-                        <a href="mailto:iagohsilva0777@gmail.com" class="link-line">iagohsilva0777@gmail.com</a>
-                        <a href="mailto:Murilobozolans@gmail.com" class="link-line">Murilobozolans@gmail.com</a>
-                    </div>
+                <div class="contact-item">
+                    <h4>Contato Direto</h4>
+                    <a href="mailto:iagohsilva0777@gmail.com">iagohsilva0777@gmail.com</a>
+                    <a href="mailto:Murilobozolans@gmail.com">Murilobozolans@gmail.com</a>
                 </div>
-
-                <div class="contact-group hover-target">
-                    <h3>REDES E CÓDIGOS</h3>
-                    <div class="social-flex">
-                        <a href="https://www.linkedin.com/in/iago-silva-3909773bb" target="_blank" class="link-line">LinkedIn</a>
-                        <a href="https://github.com/iago012h" target="_blank" class="link-line">GitHub (Iago)</a>
-                    </div>
+                <div class="contact-item">
+                    <h4>Redes & Código</h4>
+                    <a href="https://www.linkedin.com/in/iago-silva-3909773bb" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/iago012h" target="_blank">GitHub</a>
                 </div>
-
             </div>
         </section>
 
         <!-- FOOTER -->
         <footer>
-            <div style="padding: 2.5rem 0; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; color: var(--text-secondary); font-size: 0.85rem; font-family: 'Inter', sans-serif;">
-                © 2026 Iago Silva & Murilo Bozolan
-            </div>
+            <span>© 2026 Iago Silva & Murilo Bozolan</span>
+            <span>Design Refinado. Código Limpo.</span>
         </footer>
 
     </div>
 
     <script>
-        // CONFIGURAÇÃO DO CURSOR
-        const cursor = document.getElementById('cursor');
-        const hoverTargets = document.querySelectorAll('a, .hover-target');
-
-        document.addEventListener('mousemove', (e) => {
-            if (window.getComputedStyle(cursor).display !== 'none') {
-                cursor.style.left = e.clientX + 'px';
-                cursor.style.top = e.clientY + 'px';
-            }
-        });
-
-        hoverTargets.forEach(target => {
-            target.addEventListener('mouseenter', () => {
-                if (window.getComputedStyle(cursor).display !== 'none') {
-                    cursor.style.width = '60px';
-                    cursor.style.height = '60px';
-                    cursor.style.background = 'white';
-                }
-            });
-            target.addEventListener('mouseleave', () => {
-                if (window.getComputedStyle(cursor).display !== 'none') {
-                    cursor.style.width = '20px';
-                    cursor.style.height = '20px';
-                    cursor.style.background = 'var(--accent)';
-                }
-            });
-        });
-
-        // CONFIGURAÇÃO DOS CARDS (3D Hover)
+        // JS DO EFEITO 3D HOVER (Tilt) REFINADO (Menos agressivo, mais premium)
         const cards = document.querySelectorAll('.project-card');
+        
         cards.forEach(card => {
             const wrapper = card.querySelector('.project-image-wrapper');
             
             card.addEventListener('mousemove', (e) => {
-                if(window.innerWidth > 768 && wrapper) {
+                // Ativa apenas em telas grandes (desktops)
+                if(window.innerWidth > 900 && wrapper) {
                     const rect = wrapper.getBoundingClientRect();
                     const x = e.clientX - rect.left;
                     const y = e.clientY - rect.top;
@@ -787,168 +599,39 @@
                     const centerX = rect.width / 2;
                     const centerY = rect.height / 2;
                     
-                    const rotateX = ((y - centerY) / centerY) * -15;
-                    const rotateY = ((x - centerX) / centerX) * 15;
+                    // Valores divisores aumentados (de 15 para 20) para um efeito de rotação mais suave
+                    const rotateX = ((y - centerY) / centerY) * -6;
+                    const rotateY = ((x - centerX) / centerX) * 6;
                     
                     wrapper.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
                 }
             });
 
             card.addEventListener('mouseleave', () => {
-                if(wrapper) wrapper.style.transform = `rotateX(0deg) rotateY(0deg) scale(1)`;
-            });
-            
-            card.addEventListener('mouseenter', () => {
-                if (window.getComputedStyle(cursor).display !== 'none') {
-                    cursor.style.width = '80px';
-                    cursor.style.height = '80px';
-                    cursor.style.mixBlendMode = 'normal';
-                    cursor.style.background = 'rgba(0, 229, 255, 0.2)';
-                    cursor.style.backdropFilter = 'blur(4px)';
-                }
-            });
-            card.addEventListener('mouseleave', () => {
-                if (window.getComputedStyle(cursor).display !== 'none') {
-                    cursor.style.width = '20px';
-                    cursor.style.height = '20px';
-                    cursor.style.mixBlendMode = 'difference';
-                    cursor.style.background = 'var(--accent)';
-                    cursor.style.backdropFilter = 'none';
+                if(wrapper) {
+                    wrapper.style.transform = `rotateX(0deg) rotateY(0deg) scale(1)`;
                 }
             });
         });
 
-        // SCROLL REVEAL OBSERVER
+        // OBSERVER PARA ANIMAÇÃO DE ENTRADA (Scroll Reveal Fade-Up)
         const revealElements = document.querySelectorAll('.reveal');
+        
         const revealOptions = {
             threshold: 0.15,
-            rootMargin: "0px 0px -50px 0px"
+            rootMargin: "0px 0px -50px 0px" // Dispara um pouco antes de entrar na tela totalmente
         };
 
         const revealObserver = new IntersectionObserver(function(entries, observer) {
             entries.forEach(entry => {
-                if (!entry.isIntersecting) return;
-                entry.target.classList.add('active');
-                observer.unobserve(entry.target); 
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); 
+                }
             });
         }, revealOptions);
 
         revealElements.forEach(el => revealObserver.observe(el));
-
-        // CONFIGURAÇÃO DO CANVAS (Fundo Neural)
-        const canvas = document.getElementById('neural-canvas');
-        const ctx = canvas.getContext('2d');
-        let width, height;
-        let particles = [];
-        let mouse = { x: null, y: null, radius: 150 };
-
-        window.addEventListener('mousemove', (e) => {
-            mouse.x = e.x;
-            mouse.y = e.y;
-        });
-
-        window.addEventListener('mouseout', () => {
-            mouse.x = undefined;
-            mouse.y = undefined;
-        });
-
-        function resize() {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resize);
-        resize();
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height;
-                this.size = Math.random() * 2 + 1;
-                this.baseX = this.x;
-                this.baseY = this.y;
-                this.density = (Math.random() * 30) + 1;
-                this.vx = (Math.random() - 0.5) * 0.5;
-                this.vy = (Math.random() - 0.5) * 0.5;
-            }
-
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-
-                if(this.x < 0 || this.x > width) this.vx = -this.vx;
-                if(this.y < 0 || this.y > height) this.vy = -this.vy;
-
-                if(mouse.x != null) {
-                    let dx = mouse.x - this.x;
-                    let dy = mouse.y - this.y;
-                    let distance = Math.sqrt(dx * dx + dy * dy);
-                    let forceDirectionX = dx / distance;
-                    let forceDirectionY = dy / distance;
-                    let maxDistance = mouse.radius;
-                    let force = (maxDistance - distance) / maxDistance;
-                    let directionX = forceDirectionX * force * this.density;
-                    let directionY = forceDirectionY * force * this.density;
-
-                    if (distance < mouse.radius) {
-                        this.x -= directionX;
-                        this.y -= directionY;
-                    }
-                }
-            }
-
-            draw() {
-                ctx.fillStyle = 'rgba(0, 229, 255, 0.5)';
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.closePath();
-                ctx.fill();
-            }
-        }
-
-        function init() {
-            particles = [];
-            let divider = window.innerWidth > 768 ? 9000 : 15000; 
-            let numberOfParticles = (width * height) / divider;
-            for (let i = 0; i < numberOfParticles; i++) {
-                particles.push(new Particle());
-            }
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, width, height);
-            
-            for (let i = 0; i < particles.length; i++) {
-                particles[i].update();
-                particles[i].draw();
-                
-                for (let j = i; j < particles.length; j++) {
-                    let dx = particles[i].x - particles[j].x;
-                    let dy = particles[i].y - particles[j].y;
-                    let distance = Math.sqrt(dx * dx + dy * dy);
-                    
-                    if (distance < 120) {
-                        ctx.beginPath();
-                        ctx.strokeStyle = `rgba(0, 229, 255, ${0.2 - distance/600})`;
-                        ctx.lineWidth = 1;
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
-                        ctx.closePath();
-                    }
-                }
-            }
-            requestAnimationFrame(animate);
-        }
-
-        init();
-        animate();
-
-        window.addEventListener('resize', () => {
-            init();
-        });
-
-        console.log("%cSYSTEM SECURE: ACESSO PERMITIDO", "color: #00E5FF; font-size: 20px; font-weight: bold; font-family: monospace;");
-        console.log("%cIago & Murilo", "color: #888888; font-size: 14px; font-family: monospace;");
     </script>
 </body>
 </html>
