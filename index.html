@@ -24,9 +24,9 @@
     <meta property="og:site_name" content="IAMU">
     
     <!-- NOVO ÍCONE DA ABA DO NAVEGADOR (Favicon com a 2ª Imagem) -->
-    <link rel="icon" href="/logo-iamu-icon.png" type="image/png">
-    <link rel="shortcut icon" href="/logo-iamu-icon.png" type="image/png">
-    <link rel="apple-touch-icon" href="/logo-iamu-icon.png">
+    <link rel="icon" href="/logo-iamu-icon.png?v=2" type="image/png">
+    <link rel="shortcut icon" href="/logo-iamu-icon.png?v=2" type="image/png">
+    <link rel="apple-touch-icon" href="/logo-iamu-icon.png?v=2">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -94,14 +94,16 @@
         .logo img {
             height: 70px; /* Logo maior para mais destaque */
             width: auto;
-            /* Se a logo for transparente, não precisamos do mix-blend-mode. Se for escura/clara, isso pode afetar a visibilidade */
-            /* mix-blend-mode: screen; */ 
+            /* O SEGREDO: Isso remove o fundo preto da imagem automaticamente! */
+            mix-blend-mode: screen; 
+            filter: drop-shadow(0 0 5px rgba(0, 229, 255, 0.3)); /* Brilho sutil para destacar a logo clara */
             opacity: 1; /* Removendo opacidade padrão para deixá-la mais forte */
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, filter 0.3s ease;
         }
         
         .logo:hover img {
             transform: scale(1.05); /* Pequeno zoom no hover em vez de mudar opacidade */
+            filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.6));
         }
 
         .nav-links {
