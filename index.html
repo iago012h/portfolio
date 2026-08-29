@@ -92,8 +92,8 @@
         .logo img {
             height: 38px; /* Tamanho elegante na navbar */
             width: auto;
-            /* O SEGREDO: Isso remove o fundo preto da imagem automaticamente! */
-            mix-blend-mode: screen; 
+            /* Se a logo for transparente, não precisamos do mix-blend-mode. Se for escura/clara, isso pode afetar a visibilidade */
+            /* mix-blend-mode: screen; */ 
             opacity: 0.9;
             transition: opacity 0.3s ease;
         }
@@ -720,7 +720,8 @@
                 <!-- Clínica Estética -->
                 <a href="#" class="project-card hover-target reveal">
                     <div class="project-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Exemplo Clínica Estética">
+                        <!-- Corrigido para a imagem local do projeto Inova Pele que estava na versão anterior -->
+                        <img src="image_20869e.jpg" alt="Exemplo Clínica Estética" style="object-fit: contain; padding: 2rem; background-color: #FF66A3;">
                     </div>
                     <div class="project-info">
                         <h3>Exemplo Clínica Estética</h3>
