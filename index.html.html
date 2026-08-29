@@ -6,7 +6,7 @@
     
     <!-- SEO Básico -->
     <title>Iago & Murilo | Criação de Landing Pages e Sites de Alta Conversão</title>
-    <meta name="description" content="Transformamos ideias em Landing Pages modernas, rápidas e focadas em conversão máxima. Desenvolvedores especialistas em Engenharia de Software e IA, atendendo todo o Brasil.">
+    <meta name="description" content="Transformamos ideias em Landing Pages modernas, rápidas e focadas em conversão máxima. Desenvolvedores especialistas em Engenharia de Software, atendendo todo o Brasil.">
     <meta name="keywords" content="criação de sites, landing pages, desenvolvimento web, programador freelancer, sites rápidos, design moderno, Jandaia do Sul, Maringá, Paraná, Brasil">
     <meta name="author" content="Iago Silva & Murilo Bozolan">
     <meta name="robots" content="index, follow">
@@ -21,7 +21,7 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="Iago & Murilo | Landing Pages de Alta Conversão">
     <meta property="og:description" content="Desenvolvimento de Landing Pages modernas, rápidas e funcionais para o seu negócio.">
-    <meta property="og:site_name" content="System.Initiated">
+    <meta property="og:site_name" content="Iago & Murilo">
     
     <!-- Ícone da aba do navegador -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
@@ -85,9 +85,9 @@
         .logo {
             color: var(--accent);
             text-decoration: none;
-            font-family: 'Syne', sans-serif;
-            font-weight: 800;
-            font-size: 1.2rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
             letter-spacing: 2px;
         }
 
@@ -127,7 +127,7 @@
             width: 100%;
         }
 
-        /* CURSOR E CANVAS */
+        /* CURSOR E CANVAS INTERATIVO */
         .custom-cursor {
             position: fixed;
             top: 0;
@@ -143,14 +143,14 @@
             transition: width 0.2s, height 0.2s;
         }
         
-        #neural-canvas {
+        #interactive-canvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
             z-index: -1;
-            opacity: 0.6;
+            opacity: 0.8;
         }
 
         .container {
@@ -436,7 +436,7 @@
         }
 
         .contact h2 {
-            font-size: clamp(3rem, 8vw, 5rem);
+            font-size: clamp(3rem, 6vw, 4.5rem);
             margin-bottom: 0.5rem;
             color: var(--accent);
         }
@@ -606,7 +606,7 @@
 
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#home" class="logo hover-target">SYS.INIT</a>
+            <a href="#home" class="logo hover-target">IAGO & MURILO</a>
             <div class="nav-links">
                 <a href="#home" class="hover-target">Início</a>
                 <a href="#about" class="hover-target">Sobre</a>
@@ -617,7 +617,8 @@
     </nav>
 
     <div class="custom-cursor" id="cursor"></div>
-    <canvas id="neural-canvas"></canvas>
+    <!-- Novo Canvas (Sem Galáxia, apenas Glow Interativo) -->
+    <canvas id="interactive-canvas"></canvas>
 
     <div class="container">
         
@@ -633,12 +634,12 @@
 
         <!-- SOBRE NÓS -->
         <section class="about" id="about">
-            <h2 class="reveal">System.<br>Initiated</h2>
+            <h2 class="reveal">Quem<br>Somos</h2>
             <div class="grid">
                 <div></div>
                 <div class="about-text reveal">
                     <p>
-                        Somos estudantes de <strong>Inteligência Artificial e Engenharia de Software</strong> e transformamos nossas ideias em projetos reais. Unimos programação, design e tecnologia para criar experiências digitais premium pensadas para gerar resultados para o seu negócio.
+                        Somos estudantes de <strong>Engenharia de Software e Inteligência Artificial</strong> e transformamos nossas ideias em projetos reais. Unimos programação, design e tecnologia para criar experiências digitais premium pensadas para gerar resultados para o seu negócio.
                     </p>
                     <div class="ufpr-badge">UFPR - Jandaia do Sul</div>
                     
@@ -660,7 +661,7 @@
             <div class="portfolio-category-label reveal">Categoria Premium</div>
             <h2 class="reveal" style="font-size: clamp(2.5rem, 5vw, 5rem); margin-bottom: 1rem;">Landing Pages c/ Funil Interativo</h2>
             <p class="portfolio-desc reveal">
-                Nossa solução de mais alto valor agregado. Landing pages equipadas com um <strong>Chatbot Nativo (State Machine)</strong> para captação inteligente de leads. Sem mensalidades extras de plataformas de terceiros. Oferece saudações dinâmicas e engajamento proativo que convertem visitantes em clientes de alto ticket no automático.
+                Nossa solução de mais alto valor agregado. Landing pages equipadas com um <strong>Chatbot Nativo (State Machine)</strong> para captação inteligente de leads. Sem mensalidades extras de plataformas de terceiros. Oferece saudações dinâmicas e engajamento proativo que convertem visitantes em clientes no automático.
             </p>
             
             <div class="portfolio-grid" style="margin-top: 0; margin-bottom: 20vh;">
@@ -679,44 +680,50 @@
                 </a>
             </div>
 
-            <!-- CATEGORIA 2: ESSENTIAL (Sem Chatbot) -->
+            <!-- CATEGORIA 2: ESSENTIAL (Sem Chatbot) - IMAGENS E TEXTOS ATUALIZADOS -->
             <div class="portfolio-category-label reveal">Performance Extrema</div>
-            <h2 class="reveal" style="font-size: clamp(2.5rem, 5vw, 5rem); margin-bottom: 1rem;">Landing Pages & Plataformas Digitais</h2>
+            <h2 class="reveal" style="font-size: clamp(2.5rem, 5vw, 5rem); margin-bottom: 1rem;">Sites & Plataformas Digitais</h2>
             <p class="portfolio-desc reveal">
                 Projetos imersivos focados em design moderno, carregamento ultrarrápido e usabilidade direta. Estrutura ideal para apresentar a autoridade da sua marca e produtos na web.
             </p>
             
             <div class="portfolio-grid" style="margin-top: 0;">
                 
+                <!-- Barbearia -->
                 <a href="https://gr-barbearia-liard.vercel.app" target="_blank" class="project-card hover-target reveal">
                     <div class="project-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="GR Barbearia">
+                        <!-- Foto atualizada de Barbeiro -->
+                        <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="GR Barbearia">
                     </div>
                     <div class="project-info">
                         <h3>GR Barbearia</h3>
-                        <p>Plataforma digital para gestão e agendamento, combinando estética moderna com usabilidade direta para eliminar o atrito do usuário.</p>
+                        <p>Plataforma digital para gestão e agendamento, combinando estética moderna com usabilidade direta para eliminar o atrito do cliente na hora de marcar um corte.</p>
                         <span class="project-btn">Acesse aqui o site ↗</span>
                     </div>
                 </a>
 
+                <!-- Clínica Estética -->
                 <a href="https://inovapele.vercel.app" target="_blank" class="project-card hover-target reveal">
                     <div class="project-image-wrapper">
-                        <img src="image_20869e.jpg" alt="Inova Pele" style="object-fit: contain; padding: 2rem; background-color: #FF66A3;">
+                        <!-- Foto atualizada de Spa/Clínica Estética -->
+                        <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Clínica Estética Inova Pele">
                     </div>
                     <div class="project-info">
-                        <h3>Inova Pele</h3>
-                        <p>Landing page mobile-first de alta conversão para clínica de estética, projetada com foco visual absoluto no produto e tratamento.</p>
+                        <h3>Clínica Inova Pele</h3>
+                        <p>Landing page mobile-first de alta conversão para clínica de estética, projetada com foco visual absoluto no produto, bem-estar e tratamento dos pacientes.</p>
                         <span class="project-btn">Acesse aqui o site ↗</span>
                     </div>
                 </a>
 
+                <!-- Estúdio de Tatuagem (Antigo AZ Maringá) -->
                 <a href="https://azmaringa.vercel.app" target="_blank" class="project-card hover-target reveal">
                     <div class="project-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="AZ Maringá">
+                        <!-- Foto atualizada de Tatuador/Estúdio -->
+                        <img src="https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Estúdio de Tatuagem">
                     </div>
                     <div class="project-info">
-                        <h3>AZ Maringá</h3>
-                        <p>Interface corporativa imersiva B2B focada em apresentar autoridade de marca através de design minimalista e estruturado.</p>
+                        <h3>Ink Studio (Tatuagem)</h3>
+                        <p>Interface imersiva focada em expor o portfólio de artes com um design dark e intenso, atraindo agendamentos diretos e gerando autoridade para o artista.</p>
                         <span class="project-btn">Acesse aqui o site ↗</span>
                     </div>
                 </a>
@@ -726,7 +733,7 @@
 
         <!-- CONTATO PREMIUM -->
         <section class="contact" id="contact">
-            <h2 class="reveal">Start Talking</h2>
+            <h2 class="reveal">Vamos Conversar</h2>
             <p class="contact-subtitle reveal">Tem uma ideia ou projeto? Vamos construir juntos.</p>
             
             <div class="contact-grid reveal" style="transition-delay: 0.2s;">
@@ -855,21 +862,19 @@
 
         revealElements.forEach(el => revealObserver.observe(el));
 
-        // CONFIGURAÇÃO DO CANVAS (Fundo Neural)
-        const canvas = document.getElementById('neural-canvas');
+        // NOVO CANVAS INTERATIVO (Glow Ambient, sem cara de IA/Galáxia)
+        const canvas = document.getElementById('interactive-canvas');
         const ctx = canvas.getContext('2d');
         let width, height;
-        let particles = [];
-        let mouse = { x: null, y: null, radius: 150 };
+        
+        let mouseX = 0;
+        let mouseY = 0;
+        let targetX = window.innerWidth / 2;
+        let targetY = window.innerHeight / 2;
 
         window.addEventListener('mousemove', (e) => {
-            mouse.x = e.x;
-            mouse.y = e.y;
-        });
-
-        window.addEventListener('mouseout', () => {
-            mouse.x = undefined;
-            mouse.y = undefined;
+            targetX = e.clientX;
+            targetY = e.clientY;
         });
 
         function resize() {
@@ -879,96 +884,59 @@
         window.addEventListener('resize', resize);
         resize();
 
-        class Particle {
-            constructor() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height;
-                this.size = Math.random() * 2 + 1;
-                this.baseX = this.x;
-                this.baseY = this.y;
-                this.density = (Math.random() * 30) + 1;
-                this.vx = (Math.random() - 0.5) * 0.5;
-                this.vy = (Math.random() - 0.5) * 0.5;
-            }
-
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-
-                if(this.x < 0 || this.x > width) this.vx = -this.vx;
-                if(this.y < 0 || this.y > height) this.vy = -this.vy;
-
-                if(mouse.x != null) {
-                    let dx = mouse.x - this.x;
-                    let dy = mouse.y - this.y;
-                    let distance = Math.sqrt(dx * dx + dy * dy);
-                    let forceDirectionX = dx / distance;
-                    let forceDirectionY = dy / distance;
-                    let maxDistance = mouse.radius;
-                    let force = (maxDistance - distance) / maxDistance;
-                    let directionX = forceDirectionX * force * this.density;
-                    let directionY = forceDirectionY * force * this.density;
-
-                    if (distance < mouse.radius) {
-                        this.x -= directionX;
-                        this.y -= directionY;
-                    }
-                }
-            }
-
-            draw() {
-                ctx.fillStyle = 'rgba(0, 229, 255, 0.5)';
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.closePath();
-                ctx.fill();
-            }
-        }
-
-        function init() {
-            particles = [];
-            let divider = window.innerWidth > 768 ? 9000 : 15000; 
-            let numberOfParticles = (width * height) / divider;
-            for (let i = 0; i < numberOfParticles; i++) {
-                particles.push(new Particle());
-            }
+        // Orbes flutuantes sutis (dá profundidade sem parecer conexão de rede neural)
+        let orbs = [];
+        for(let i = 0; i < 4; i++) {
+            orbs.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: (Math.random() - 0.5) * 0.5,
+                radius: Math.random() * 300 + 200
+            });
         }
 
         function animate() {
             ctx.clearRect(0, 0, width, height);
             
-            for (let i = 0; i < particles.length; i++) {
-                particles[i].update();
-                particles[i].draw();
+            // Movimentação suave (easing) para o brilho que segue o mouse
+            mouseX += (targetX - mouseX) * 0.05;
+            mouseY += (targetY - mouseY) * 0.05;
+
+            // Fundo interativo que segue o mouse (Spotlight)
+            let mouseGradient = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, 600);
+            mouseGradient.addColorStop(0, 'rgba(0, 229, 255, 0.04)');
+            mouseGradient.addColorStop(1, 'rgba(0, 229, 255, 0)');
+            
+            ctx.fillStyle = mouseGradient;
+            ctx.fillRect(0, 0, width, height);
+
+            // Animação das esferas suaves flutuantes
+            for(let orb of orbs) {
+                orb.x += orb.vx;
+                orb.y += orb.vy;
+
+                // Rebater nas bordas suavemente
+                if(orb.x < -orb.radius || orb.x > width + orb.radius) orb.vx *= -1;
+                if(orb.y < -orb.radius || orb.y > height + orb.radius) orb.vy *= -1;
+
+                let orbGradient = ctx.createRadialGradient(orb.x, orb.y, 0, orb.x, orb.y, orb.radius);
+                orbGradient.addColorStop(0, 'rgba(0, 229, 255, 0.015)');
+                orbGradient.addColorStop(1, 'rgba(0, 229, 255, 0)');
                 
-                for (let j = i; j < particles.length; j++) {
-                    let dx = particles[i].x - particles[j].x;
-                    let dy = particles[i].y - particles[j].y;
-                    let distance = Math.sqrt(dx * dx + dy * dy);
-                    
-                    if (distance < 120) {
-                        ctx.beginPath();
-                        ctx.strokeStyle = `rgba(0, 229, 255, ${0.2 - distance/600})`;
-                        ctx.lineWidth = 1;
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
-                        ctx.closePath();
-                    }
-                }
+                ctx.fillStyle = orbGradient;
+                ctx.beginPath();
+                ctx.arc(orb.x, orb.y, orb.radius, 0, Math.PI * 2);
+                ctx.fill();
             }
+            
             requestAnimationFrame(animate);
         }
 
-        init();
         animate();
 
-        window.addEventListener('resize', () => {
-            init();
-        });
-
-        console.log("%cSYSTEM SECURE: ACESSO PERMITIDO", "color: #00E5FF; font-size: 20px; font-weight: bold; font-family: monospace;");
-        console.log("%cIago & Murilo", "color: #888888; font-size: 14px; font-family: monospace;");
+        console.log("%cIAGO & MURILO", "color: #00E5FF; font-size: 20px; font-weight: bold; font-family: monospace;");
+        console.log("%cAcesso ao console permitido.", "color: #888888; font-size: 14px; font-family: monospace;");
     </script>
 </body>
 </html>
