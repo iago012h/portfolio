@@ -24,7 +24,9 @@
     <meta property="og:site_name" content="IAMU">
     
     <!-- NOVO ÍCONE DA ABA DO NAVEGADOR (Favicon com a 2ª Imagem) -->
-    <link rel="icon" href="logo-iamu-icon.png" type="image/png">
+    <link rel="icon" href="/logo-iamu-icon.png" type="image/png">
+    <link rel="shortcut icon" href="/logo-iamu-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/logo-iamu-icon.png">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -90,16 +92,16 @@
         }
 
         .logo img {
-            height: 38px; /* Tamanho elegante na navbar */
+            height: 70px; /* Logo maior para mais destaque */
             width: auto;
             /* Se a logo for transparente, não precisamos do mix-blend-mode. Se for escura/clara, isso pode afetar a visibilidade */
             /* mix-blend-mode: screen; */ 
-            opacity: 0.9;
-            transition: opacity 0.3s ease;
+            opacity: 1; /* Removendo opacidade padrão para deixá-la mais forte */
+            transition: transform 0.3s ease;
         }
         
         .logo:hover img {
-            opacity: 1;
+            transform: scale(1.05); /* Pequeno zoom no hover em vez de mudar opacidade */
         }
 
         .nav-links {
@@ -622,7 +624,7 @@
         <div class="nav-container">
             <!-- NOVA LOGO COLOCADA AQUI -->
             <a href="#home" class="logo hover-target">
-                <img src="logo-iamu.png" alt="IAMU Logo">
+                <img src="/logo-iamu.png" alt="IAMU Logo">
             </a>
             <div class="nav-links">
                 <a href="#home" class="hover-target">Início</a>
@@ -721,7 +723,7 @@
                 <a href="#" class="project-card hover-target reveal">
                     <div class="project-image-wrapper">
                         <!-- Corrigido para a imagem local do projeto Inova Pele que estava na versão anterior -->
-                        <img src="image_20869e.jpg" alt="Exemplo Clínica Estética" style="object-fit: contain; padding: 2rem; background-color: #FF66A3;">
+                        <img src="/image_20869e.jpg" alt="Exemplo Clínica Estética" style="object-fit: contain; padding: 2rem; background-color: #FF66A3;">
                     </div>
                     <div class="project-info">
                         <h3>Exemplo Clínica Estética</h3>
